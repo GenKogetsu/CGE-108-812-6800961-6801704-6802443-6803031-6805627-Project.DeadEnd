@@ -1,4 +1,3 @@
 repository "Project.DeadEnd/Project.DeadEnd@18967840241834@cloud"
   path "/"
-    br "/main"
-    co "/main"
+    smartbranch "/main/Gen"

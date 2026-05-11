@@ -2,21 +2,28 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
-  tags: []
+  serializedVersion: 3
+  tags:
+  - Battery
+  - Heal
+  - interactable
+  - Enemy
+  - SFX_Channel.GenoverreiLibrary
+  - BMG_Channel.GenoverreiLibrary
+  - Voiceover_Channel.GenoverreiLibrary
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Light
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Background
+  - Midground
+  - Item
+  - Player
+  - Enemy
+  - Foreground
   - 
   - 
   - 
@@ -41,3 +48,26 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Light
+    uniqueID: 3664157993
+    locked: 0
+  - name: Background
+    uniqueID: 506604941
+    locked: 0
+  - name: Midground
+    uniqueID: 1441020465
+    locked: 0
+  - name: Item
+    uniqueID: 2956078281
+    locked: 0
+  - name: Player
+    uniqueID: 2710092545
+    locked: 0
+  - name: Enemy
+    uniqueID: 1258921667
+    locked: 0
+  - name: Foreground
+    uniqueID: 1461203423
+    locked: 0
+  m_RenderingLayers:
+  - Default
