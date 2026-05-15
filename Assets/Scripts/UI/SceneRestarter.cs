@@ -25,7 +25,9 @@ public class SceneRestarter : MonoBehaviour
 
     private void Restart()
     {
-        var currentScene = SceneManager.GetActiveScene();
-        BasicSceneEffectController.Instance.LoadScene(currentScene.name);
+        // ล้าง subscriber ทั้งหมดก่อนโหลด Scene เพื่อป้องกัน MissingReferenceException
+        _input?.ClearAllChannels();
+
+        BasicSceneEffectController.Instance.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
