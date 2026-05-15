@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
-  m_Actions: {fileID: -944628639613478452, guid: 7fc9ec31ad15a3141997049e4ed0294a, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: 7fb3ccd799fda454cb336c836e40107a, type: 3}
   m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -175,7 +175,19 @@ MonoBehaviour:
     m_ActionId: dc06e05f-ebf0-4125-87b2-5bc594bfcf0a
     m_ActionName: '2D/SkillQ[/Keyboard/q]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8909337728762738852}
+        m_TargetAssemblyTypeName: Genoverrei.Library.Core.BasicInputManager, GenoverreiLibrary
+        m_MethodName: OnRollInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 0ddb6b90-824d-47a5-88cb-8b6ff1ade19e
     m_ActionName: '2D/SkillE[/Keyboard/e]'
   - m_PersistentCalls:
@@ -315,7 +327,19 @@ MonoBehaviour:
     m_ActionId: d658c162-4f67-4ace-942e-6d2466c17ef6
     m_ActionName: '3D/Run[/Keyboard/leftShift]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8909337728762738852}
+        m_TargetAssemblyTypeName: Genoverrei.Library.Core.BasicInputManager, GenoverreiLibrary
+        m_MethodName: OnLeftClickInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: be508ad1-aa01-4fec-bccc-f01531b0997d
     m_ActionName: '2D/LeftClick[/Mouse/leftButton]'
   - m_PersistentCalls:
@@ -338,6 +362,38 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 6bfc4df0-6a34-431d-80d3-f1c61a070e3f
     m_ActionName: '3D/RightClick[/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8909337728762738852}
+        m_TargetAssemblyTypeName: Genoverrei.Library.Core.BasicInputManager, GenoverreiLibrary
+        m_MethodName: OnJumpInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5ebe61af-960f-4a24-b5f7-e68aaca779ef
+    m_ActionName: '2D/Jump[/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8909337728762738852}
+        m_TargetAssemblyTypeName: Genoverrei.Library.Core.BasicInputManager, GenoverreiLibrary
+        m_MethodName: OnRestartInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f9dc077c-92dc-48c8-93cb-88c2edfe6c0e
+    m_ActionName: '2D/AnyKey[/Keyboard/anyKey,/Mouse/rightButton,/Mouse/forwardButton,/Mouse/backButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: 2D

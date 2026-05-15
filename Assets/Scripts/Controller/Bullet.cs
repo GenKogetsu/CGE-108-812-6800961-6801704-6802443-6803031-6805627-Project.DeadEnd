@@ -40,7 +40,6 @@ public class Bullet : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(_direction);
         _rb.linearVelocity = _direction * _speed;
     }
 
@@ -61,22 +60,24 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag(_enemyTag)) return;
-
-        // ลด HP Enemy ถ้ามี BossController
-        other.GetComponent<BossController>()?.TakeDamage(_damage);
-
+        DealDamage(other.gameObject);
         Destroy(gameObject);
     }
 
-    // ─────────────────────────────────────────────────────────────────
-    // กรณีใช้ Collider แบบ Collision (ไม่ใช่ Trigger)
-    // ─────────────────────────────────────────────────────────────────
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!collision.gameObject.CompareTag(_enemyTag)) return;
-
-        collision.gameObject.GetComponent<BossController>()?.TakeDamage(_damage);
-
+        DealDamage(collision.gameObject);
         Destroy(gameObject);
+    }
+
+    private void DealDamage(GameObject target)
+    {
+        // ค้นหาทั้ง object เดียวกันและ parent (รองรับ Collider บน child)
+        var monster = target.GetComponentInParent<MonsterAI.MonsterController>();
+        if (monster != null) { monster.TakeDamage(_damage); return; }
+
+        var boss = target.GetComponentInParent<BossController>();
+        boss?.TakeDamage(_damage);
     }
 }

@@ -51,6 +51,15 @@ namespace MonsterAI
         [Tooltip("เปิดถ้าการหันหน้าตามทิศเดินยังไปคนละทาง → กลับทิศที่ใช้ตัดสิน facing จาก movement")]
         [SerializeField] private bool _invertMoveFacing = false;
 
+        // ── Hit Flash ─────────────────────────────────────────────────
+        [Header("Hit Flash")]
+        [Tooltip("Root ที่มี SpriteRenderer ทั้งหมด (รวม inactive)")]
+        [SerializeField] private Transform _hitFlashRoot;
+        [SerializeField] private Color     _hitStartColor = Color.white;
+        [SerializeField] private Color     _hitEndColor   = Color.red;
+        [SerializeField] private float     _hitLerpSpeed  = 10f;
+        [SerializeField] private int       _hitLerpCount  = 2;
+
         // ── References ────────────────────────────────────────────────
         [Header("References")]
         public Transform    PlayerTransform;
@@ -73,6 +82,8 @@ namespace MonsterAI
         float                _currentHp;
         bool                 _isDead;
         float                _lastDamageTime = -99f;
+        SpriteRenderer[]     _cachedRenderers;
+        Coroutine            _flashCoroutine;
 
         PatrolState  _patrol;
         ChaseState   _chase;
@@ -86,6 +97,10 @@ namespace MonsterAI
             Animator = GetComponent<Animator>();
 
             _cachedInitAnimSpeed = Animator.speed;
+
+            // Cache SpriteRenderers รวม inactive → ใช้สำหรับ hit flash
+            Transform flashRoot = _hitFlashRoot != null ? _hitFlashRoot : transform;
+            _cachedRenderers = flashRoot.GetComponentsInChildren<SpriteRenderer>(includeInactive: true);
             PivotPoint           = Rb2.position;
             _currentHp           = _maxHp;
 
@@ -190,7 +205,39 @@ namespace MonsterAI
         {
             if (_isDead) return;
             _currentHp = Mathf.Max(0f, _currentHp - damage);
+            TriggerHitFlash();
             if (_currentHp <= 0f) Die();
+        }
+
+        void TriggerHitFlash()
+        {
+            if (_cachedRenderers == null || _cachedRenderers.Length == 0) return;
+            if (_flashCoroutine != null) StopCoroutine(_flashCoroutine);
+            _flashCoroutine = StartCoroutine(HitFlashRoutine());
+        }
+
+        System.Collections.IEnumerator HitFlashRoutine()
+        {
+            for (int i = 0; i < _hitLerpCount; i++)
+            {
+                for (float t = 0f; t < 1f; t += Time.deltaTime * _hitLerpSpeed)
+                {
+                    SetAllColors(Color.Lerp(_hitStartColor, _hitEndColor, t));
+                    yield return null;
+                }
+                for (float t = 0f; t < 1f; t += Time.deltaTime * _hitLerpSpeed)
+                {
+                    SetAllColors(Color.Lerp(_hitEndColor, _hitStartColor, t));
+                    yield return null;
+                }
+            }
+            SetAllColors(_hitStartColor);
+        }
+
+        void SetAllColors(Color color)
+        {
+            foreach (var sr in _cachedRenderers)
+                if (sr != null) sr.color = color;
         }
 
         private void Die()

@@ -11,7 +11,12 @@ public class HpBarUI : MonoBehaviour
     [Tooltip("RectTransform ของ fill (แถบสี) ที่จะปรับ width")]
     [SerializeField] private RectTransform   _fillRect;
 
+    [Header("Game Over")]
+    [Tooltip("Canvas/Panel ที่จะ SetActive(true) เมื่อ HP = 0")]
+    [SerializeField] private GameObject _gameOverCanvas;
+
     private float _maxWidth;
+    private bool  _gameOverShown;
 
     void Start()
     {
@@ -19,6 +24,9 @@ public class HpBarUI : MonoBehaviour
             _fillRect = GetComponent<RectTransform>();
 
         _maxWidth = _fillRect.sizeDelta.x;
+
+        if (_gameOverCanvas != null)
+            _gameOverCanvas.SetActive(false);
     }
 
     void Update()
@@ -29,5 +37,13 @@ public class HpBarUI : MonoBehaviour
         ratio = Mathf.Clamp01(ratio);
 
         _fillRect.sizeDelta = new Vector2(_maxWidth * ratio, _fillRect.sizeDelta.y);
+
+        // แสดง Game Over เมื่อ HP หมด
+        if (!_gameOverShown && ratio <= 0f)
+        {
+            _gameOverShown = true;
+            if (_gameOverCanvas != null)
+                _gameOverCanvas.SetActive(true);
+        }
     }
 }

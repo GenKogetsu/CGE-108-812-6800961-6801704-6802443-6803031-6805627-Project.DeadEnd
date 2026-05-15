@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: GenoverreiLibrary::Genoverrei.Library.DesignPatternCore.BaseStatsDataSO
   BaseMoveSpeed: 5
-  BaseJumpForce: 10
+  BaseJumpForce: 12
   BaseHp: 100
   BaseStamina: 100

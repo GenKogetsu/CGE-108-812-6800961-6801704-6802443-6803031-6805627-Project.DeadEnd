@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: 9c3c10dee32e1de459358988a5037678, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: -8450897513636905553, guid: 9c3c10dee32e1de459358988a5037678, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1
@@ -178,6 +182,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: -2640396348302725712}
   m_SourcePrefab: {fileID: 4843985084834002234, guid: 9c3c10dee32e1de459358988a5037678, type: 3}
+--- !u!4 &5507937400505355488 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -7552582706839291426, guid: 9c3c10dee32e1de459358988a5037678, type: 3}
+  m_PrefabInstance: {fileID: 6584203183678043454}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6681096880476034179 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8653719598885068355, guid: 9c3c10dee32e1de459358988a5037678, type: 3}
@@ -263,13 +272,13 @@ MonoBehaviour:
       Size: {x: 1.14, y: 1.5}
     IsSpecial: 0
   - AnimatorTrigger: Attack
-    MaxCooldown: 1
+    MaxCooldown: 5
     Range:
       Offset: {x: -1.28, y: 3.59}
       Size: {x: 2, y: 1.5}
     IsSpecial: 0
   - AnimatorTrigger: SpecialT
-    MaxCooldown: 1
+    MaxCooldown: 20
     Range:
       Offset: {x: -5, y: 2.72}
       Size: {x: 9.07, y: 5.92}
@@ -280,6 +289,11 @@ MonoBehaviour:
   _playerHitTrigger: Hit
   _invertFacing: 0
   _invertMoveFacing: 1
+  _hitFlashRoot: {fileID: 5507937400505355488}
+  _hitStartColor: {r: 1, g: 1, b: 1, a: 1}
+  _hitEndColor: {r: 1, g: 0, b: 0, a: 1}
+  _hitLerpSpeed: 10
+  _hitLerpCount: 2
   PlayerTransform: {fileID: 0}
   Hitbox: {fileID: 4373397515477256147}
 --- !u!61 &2998933690859248877

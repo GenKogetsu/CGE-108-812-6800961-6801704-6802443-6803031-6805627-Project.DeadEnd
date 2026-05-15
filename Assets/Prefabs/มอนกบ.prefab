@@ -2274,7 +2274,7 @@ GameObject:
   - component: {fileID: 4408204419448341624}
   m_Layer: 0
   m_Name: "\u0E21\u0E2D\u0E19\u0E01\u0E1A"
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2409,6 +2409,11 @@ MonoBehaviour:
   _playerHitTrigger: Hit
   _invertFacing: 1
   _invertMoveFacing: 0
+  _hitFlashRoot: {fileID: 8950725550098417028}
+  _hitStartColor: {r: 1, g: 1, b: 1, a: 1}
+  _hitEndColor: {r: 1, g: 0, b: 0, a: 1}
+  _hitLerpSpeed: 10
+  _hitLerpCount: 2
   PlayerTransform: {fileID: 0}
   Hitbox: {fileID: 1803896186636107279}
 --- !u!61 &94903765478883816
