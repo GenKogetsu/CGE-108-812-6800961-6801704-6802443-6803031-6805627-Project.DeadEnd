@@ -1,0 +1,358 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4318964622965472189
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3885340494187748039}
+  - component: {fileID: 2886930805251305193}
+  - component: {fileID: 8909337728762738852}
+  m_Layer: 0
+  m_Name: Project_DeadEnd InputManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3885340494187748039
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4318964622965472189}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.35356, y: 0.24749, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2886930805251305193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4318964622965472189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: 7fc9ec31ad15a3141997049e4ed0294a, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8909337728762738852}
+        m_TargetAssemblyTypeName: Genoverrei.Library.DesignPatternCore.InputManager,
+          Genoverrei-DesignPatternCoreAD
+        m_MethodName: OnMoveInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: dce8afea-e82d-4e9c-bb34-dea07ef38b0f
+    m_ActionName: '2D/Move2D[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8909337728762738852}
+        m_TargetAssemblyTypeName: Genoverrei.Library.DesignPatternCore.InputManager,
+          Genoverrei-DesignPatternCoreAD
+        m_MethodName: OnInteractionInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 008c0c58-d4a5-4f90-9deb-39055c772fd6
+    m_ActionName: '2D/Interaction[/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8909337728762738852}
+        m_TargetAssemblyTypeName: Genoverrei.Library.DesignPatternCore.InputManager,
+          Genoverrei-DesignPatternCoreAD
+        m_MethodName: OnMoveInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 71094e59-69f6-45a2-9101-1e167569f995
+    m_ActionName: '3D/Move3D[/Keyboard/a,/Keyboard/d,/Keyboard/w,/Keyboard/s]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8909337728762738852}
+        m_TargetAssemblyTypeName: Genoverrei.Library.DesignPatternCore.InputManager,
+          Genoverrei-DesignPatternCoreAD
+        m_MethodName: OnInteractionInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 21b53cb7-e074-4748-a79c-124229f654da
+    m_ActionName: '3D/Interaction[/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2886930805251305193}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 05d40700-1a52-46ab-9532-cd937065439e
+    m_ActionName: 'UI/AnyKey[/Keyboard/anyKey,/Mouse/leftButton,/Mouse/middleButton,/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a00527c5-4924-4e6b-a65a-4042119d0320
+    m_ActionName: '2D/Pasue[/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f90b377e-0bd0-4f20-8da9-5e5bc9f73395
+    m_ActionName: '2D/Run[/Keyboard/leftShift]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c0d44d8d-0f78-4e6a-8dfa-7431023d002b
+    m_ActionName: '2D/Crawl[/Keyboard/leftCtrl]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ba953b07-87e0-46ce-8d4f-2c9839c47845
+    m_ActionName: '2D/Bag[/Keyboard/b]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 00fb2c93-5d89-4bd5-af33-2c00ed6d3715
+    m_ActionName: '2D/Map[/Keyboard/m]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fe5bba18-631d-48d3-8e8a-ed64903eeb95
+    m_ActionName: '2D/Navigate[/Keyboard/n]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1ddb4b11-ba19-4139-a114-be7d1337712d
+    m_ActionName: '2D/Qust[/Keyboard/j]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dc06e05f-ebf0-4125-87b2-5bc594bfcf0a
+    m_ActionName: '2D/SkillQ[/Keyboard/q]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0ddb6b90-824d-47a5-88cb-8b6ff1ade19e
+    m_ActionName: '2D/SkillE[/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 584fb5e4-75cb-4ca1-8f3a-ab10b1dbd419
+    m_ActionName: '2D/SkillR[/Keyboard/r]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3925a23c-5059-46fb-91f7-a317036827bc
+    m_ActionName: '2D/Num1[/Keyboard/1]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7f2b744d-3946-4ef3-ab85-af09d5af71a7
+    m_ActionName: '2D/Num2[/Keyboard/2]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e0d5d6bc-8aec-4391-af44-fd24be61ed64
+    m_ActionName: '2D/Num3[/Keyboard/3]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9efe0353-b728-4ac6-ac1c-94673a686e3f
+    m_ActionName: '2D/Num4[/Keyboard/4]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8abd9fc2-e55c-4b87-9a17-2ba680ab584c
+    m_ActionName: '2D/Num5[/Keyboard/5]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a2ec671c-4750-4396-ba42-ffad32ed0341
+    m_ActionName: '2D/Num6[/Keyboard/6]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3a12925e-cf20-483c-9fa4-1d00708d43ef
+    m_ActionName: '2D/Num7[/Keyboard/7]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7d6f71c7-fcda-4b96-adfb-0a6bf628aba4
+    m_ActionName: '2D/Num8[/Keyboard/8]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5ca500ba-118a-4322-a5a6-c981c6e181ac
+    m_ActionName: '2D/Num9[/Keyboard/9]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 37024a36-9646-4fa3-babb-d45355f0c69f
+    m_ActionName: '2D/Num0[/Keyboard/0]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a352c87a-3771-4d39-abab-a7fe825624d9
+    m_ActionName: '2D/HUD[/Keyboard/tab]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 840735fd-4bdb-4d6b-b9f3-aa19772c6e2a
+    m_ActionName: '2D/UseItem[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 66044306-3db6-4a57-8c2c-74a4ff6a02df
+    m_ActionName: '3D/UseItem[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 276d30a5-b6a2-4d2d-88e6-fabbb6bacbe7
+    m_ActionName: '3D/HUD[/Keyboard/tab]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bb8ebe37-67d6-42c6-a939-19378ba25727
+    m_ActionName: '3D/Num0[/Keyboard/0]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 02ae1686-51aa-47e2-8485-baf5accdbfd3
+    m_ActionName: '3D/Num9[/Keyboard/9]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c07fc7c2-8f57-4109-85ed-f919f9d1b5c7
+    m_ActionName: '3D/Num8[/Keyboard/8]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 28c2f9a6-33b5-4313-81a2-6ec7cec28c2f
+    m_ActionName: '3D/Num7[/Keyboard/7]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 51118519-cdcf-49e5-aa99-24d8f0a5515d
+    m_ActionName: '3D/Num6[/Keyboard/6]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 545b231d-3533-416c-a814-fd6562757e15
+    m_ActionName: '3D/Num5[/Keyboard/5]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: faf40f33-9e56-475b-a18c-89de144ed532
+    m_ActionName: '3D/Num4[/Keyboard/4]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 099b2346-970c-4855-a221-076df9302b86
+    m_ActionName: '3D/Num3[/Keyboard/3]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 009e8385-67e7-4c5a-894e-b13167c8dcbb
+    m_ActionName: '3D/Num2[/Keyboard/2]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 206b127d-819a-4b85-960a-e8171ddbef33
+    m_ActionName: '3D/Num1[/Keyboard/1]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 81a06de1-bdbf-46b0-b6f6-5aca1e05ecff
+    m_ActionName: '3D/SkillR[/Keyboard/r]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 027e9900-12e4-4345-97cd-f8a8417dec82
+    m_ActionName: '3D/SkillE[/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0bdc4520-aab3-4a25-800c-66a6a94d6ad3
+    m_ActionName: '3D/SkillQ[/Keyboard/q]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8908cef7-2897-4f39-984b-20dcf551baa9
+    m_ActionName: '3D/Qust[/Keyboard/j]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6d5fe177-ec7c-4f82-91e1-37b1d5c1997e
+    m_ActionName: '3D/Navigate[/Keyboard/n]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 51d8c283-084d-4e54-b8ad-182ea89d6387
+    m_ActionName: '3D/Map[/Keyboard/m]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: deba7a20-7201-4889-811c-b6920208b549
+    m_ActionName: '3D/Bag[/Keyboard/b]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8041fad7-3c17-425b-ad1e-603406ea72e9
+    m_ActionName: '3D/Crawl[/Keyboard/leftCtrl]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d658c162-4f67-4ace-942e-6d2466c17ef6
+    m_ActionName: '3D/Run[/Keyboard/leftShift]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: be508ad1-aa01-4fec-bccc-f01531b0997d
+    m_ActionName: '2D/LeftClick[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 84f97815-19f9-4d9c-b18d-00b81d8cd27b
+    m_ActionName: '2D/MidClick[/Mouse/middleButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 98cc9f4c-2c37-4aa4-b20b-8689cb85ca36
+    m_ActionName: '2D/RightClick[/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 92374f30-062a-47d6-b380-92a4f38596ca
+    m_ActionName: '3D/LeftClick[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fa9621f4-f889-4f29-b60e-49819b7d9d7d
+    m_ActionName: '3D/MidClick[/Mouse/middleButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6bfc4df0-6a34-431d-80d3-f1c61a070e3f
+    m_ActionName: '3D/RightClick[/Mouse/rightButton]'
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: 2D
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &8909337728762738852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4318964622965472189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76b009f9d1be08f42a278d3353443bb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Genoverrei-DesignPatternCoreAD::Genoverrei.Library.DesignPatternCore.InputManager
+  BasicObserverChannel: {fileID: 11400000, guid: c0d221c124409de48bd4b9fb75a4b3b1, type: 2}

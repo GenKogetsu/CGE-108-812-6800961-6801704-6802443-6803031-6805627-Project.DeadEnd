@@ -148,3 +148,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dfab9a7816d0134eaf540dff4567987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LightController
+  Lighting: {fileID: 3833255852131400199}
+  LightAnimator: {fileID: 5089046312747696179}
+  LightIndex: 0
+  GapTime: 0
+  LightAnimations:
+  - {fileID: 7400000, guid: 8b0977b1344a6704ab77bdde3ae58095, type: 2}
+  - {fileID: 7400000, guid: 2ce2bf5b3878a57499b14cb75d119989, type: 2}
+  - {fileID: 7400000, guid: 41ecaa07eb852964dbad66f1b3cbbe36, type: 2}
+  - {fileID: 7400000, guid: e948a6c3c494f3347ab0cd5433dbdba8, type: 2}
+  - {fileID: 7400000, guid: 47e155349e38aef4994393ef87961ea9, type: 2}
+  - {fileID: 7400000, guid: 4fc48aa002463de40b27b28eb9f8de12, type: 2}
+  - {fileID: 7400000, guid: b3087ca7fcb670647b7eeeea59f25ad9, type: 2}
+  - {fileID: 7400000, guid: 288159bb86ed3fd48b5eb08095291cc6, type: 2}
+  - {fileID: 7400000, guid: 142dd958fb734264ca0ed3f9b038a005, type: 2}
+  - {fileID: 7400000, guid: e2ac0b844774b8644995f1f81a8056f0, type: 2}
