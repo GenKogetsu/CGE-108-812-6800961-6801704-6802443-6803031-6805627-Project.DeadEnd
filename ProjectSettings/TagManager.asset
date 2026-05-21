@@ -11,6 +11,9 @@ TagManager:
   - SFX_Channel.GenoverreiLibrary
   - BMG_Channel.GenoverreiLibrary
   - Voiceover_Channel.GenoverreiLibrary
+  - SFX_Channel.KogetsuLibrary
+  - BMG_Channel.KogetsuLibrary
+  - Voiceover_Channel.KogetsuLibrary
   layers:
   - Default
   - TransparentFX

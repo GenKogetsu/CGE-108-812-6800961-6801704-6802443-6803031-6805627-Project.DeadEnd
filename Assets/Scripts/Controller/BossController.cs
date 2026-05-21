@@ -1,33 +1,23 @@
-using Genoverrei.Library.Core;
+using Kogetsu.Library.Core;
 using UnityEngine;
 
-/// <summary>
-/// Simple 2-Phase Boss Controller
-///   Phase 1 : plays "Phase_1_All" clip, moves toward player
-///   Phase 2 : switches model, plays "Phase_2_All" clip, continues
-/// จัดการ HP และ Hit Flash เอง ไม่พึ่ง StatsController
-/// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
 public class BossController : MonoBehaviour
 {
-    // ── Phase Models ──────────────────────────────────────────────────
     [Header("Phase Models")]
     [SerializeField] private GameObject _phase1Model;
     [SerializeField] private GameObject _phase2Model;
     [SerializeField] private Animator   _phase1Animator;
     [SerializeField] private Animator   _phase2Animator;
 
-    // ── Animation Clip Names ──────────────────────────────────────────
     [Header("Animation Clip Names")]
     [SerializeField] private string _phase1ClipName = "Phase_1_All";
     [SerializeField] private string _phase2ClipName = "Phase_2_All";
 
-    // ── HP ────────────────────────────────────────────────────────────
     [Header("HP")]
     [SerializeField] private float _phase1MaxHp = 500f;
     [SerializeField] private float _phase2MaxHp = 500f;
 
-    // ── Hit Flash ─────────────────────────────────────────────────────
     [Header("Hit Flash")]
     [Tooltip("Root ที่มี SpriteRenderer ทั้งหมด (รวม inactive) — ถ้าไม่ใส่ใช้ transform ตัวเอง")]
     [SerializeField] private Transform _hitFlashRoot;
@@ -36,26 +26,22 @@ public class BossController : MonoBehaviour
     [SerializeField] private float     _hitLerpSpeed  = 10f;
     [SerializeField] private int       _hitLerpCount  = 2;
 
-    // ── Movement ──────────────────────────────────────────────────────
     [Header("Movement")]
     [SerializeField] private float _moveSpeed    = 3f;
     [SerializeField] private float _detectRange  = 20f;
     [SerializeField] private float _stopRange    = 2.5f;
     [SerializeField] private bool  _autoFlip     = false;
 
-    // ── Attack / Contact Damage ───────────────────────────────────────
     [Header("Attack")]
     [SerializeField] private float _contactDamage    = 20f;
     [SerializeField] private float _damageCooldown   = 0.8f;
     [SerializeField] private float _attackIntervalMin = 1.5f;
     [SerializeField] private float _attackIntervalMax = 3f;
 
-    // ── Game Over ─────────────────────────────────────────────────────
     [Header("Game Over")]
     [Tooltip("Canvas/Panel ที่จะ SetActive(true) ตอนบอสตาย")]
     [SerializeField] private GameObject _gameOverCanvas;
 
-    // ── Runtime ───────────────────────────────────────────────────────
     private Rigidbody2D      _rb;
     private Animator         _anim;
     private Transform        _player;
@@ -69,34 +55,28 @@ public class BossController : MonoBehaviour
     private float _lastDamageTime = -99f;
     private float _nextAttackTime = 0f;
 
-    // ── Public ────────────────────────────────────────────────────────
     public float CurrentHp => _currentHp;
     public float MaxHp     => _isPhase2 ? _phase2MaxHp : _phase1MaxHp;
     public bool  IsPhase2  => _isPhase2;
 
-    // ─────────────────────────────────────────────────────────────────
     private void Awake()
     {
         _rb              = GetComponent<Rigidbody2D>();
         _rb.gravityScale = 0f;
         _rb.constraints  = RigidbodyConstraints2D.FreezeRotation;
 
-        // ซ่อน Phase 2 ทันทีใน Awake
         if (_phase1Model != null) _phase1Model.SetActive(true);
         if (_phase2Model != null) _phase2Model.SetActive(false);
 
-        // Auto-find Animator จาก Phase 1 model
         if (_phase1Animator == null)
             _phase1Animator = _phase1Model != null
                 ? _phase1Model.GetComponentInChildren<Animator>()
                 : GetComponentInChildren<Animator>();
 
-        // Cache SpriteRenderer รวม inactive → hit flash รองรับทั้งสองโมเดลตั้งแต่แรก
         Transform flashRoot = _hitFlashRoot != null ? _hitFlashRoot : transform;
         _cachedRenderers = flashRoot.GetComponentsInChildren<SpriteRenderer>(includeInactive: true);
     }
 
-    // ─────────────────────────────────────────────────────────────────
     private void Start()
     {
         var playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -108,7 +88,6 @@ public class BossController : MonoBehaviour
         _currentHp = _phase1MaxHp;
         _anim      = _phase1Animator;
 
-        // บังคับโมเดลตาม phase ทุกครั้งที่ Start
         if (_phase1Model != null) _phase1Model.SetActive(!_isPhase2);
         if (_phase2Model != null) _phase2Model.SetActive(_isPhase2);
 
@@ -117,7 +96,6 @@ public class BossController : MonoBehaviour
         BossHPUIController.Instance?.Refresh(this);
     }
 
-    // ─────────────────────────────────────────────────────────────────
     private void Update()
     {
         if (_isDead) return;
@@ -151,7 +129,6 @@ public class BossController : MonoBehaviour
         }
     }
 
-    // ─────────────────────────────────────────────────────────────────
     public void TakeDamage(float damage)
     {
         if (_isDead) return;
@@ -167,7 +144,6 @@ public class BossController : MonoBehaviour
         }
     }
 
-    // ─────────────────────────────────────────────────────────────────
     private void TriggerHitFlash()
     {
         if (_cachedRenderers == null || _cachedRenderers.Length == 0) return;
@@ -199,7 +175,6 @@ public class BossController : MonoBehaviour
             if (sr != null) sr.color = color;
     }
 
-    // ─────────────────────────────────────────────────────────────────
     private void SwitchToPhase2()
     {
         _isPhase2  = true;
@@ -210,7 +185,6 @@ public class BossController : MonoBehaviour
 
         if (_phase2Animator != null) _anim = _phase2Animator;
 
-        // Re-cache SpriteRenderer หลังสลับโมเดล
         Transform flashRoot = _hitFlashRoot != null ? _hitFlashRoot : transform;
         _cachedRenderers = flashRoot.GetComponentsInChildren<SpriteRenderer>(includeInactive: true);
 
@@ -219,7 +193,6 @@ public class BossController : MonoBehaviour
         PlayClip(_phase2ClipName);
     }
 
-    // ─────────────────────────────────────────────────────────────────
     private void GameOver()
     {
         _isDead            = true;
@@ -230,7 +203,6 @@ public class BossController : MonoBehaviour
             _gameOverCanvas.SetActive(true);
     }
 
-    // ─────────────────────────────────────────────────────────────────
     private void FlipToward(float dirX)
     {
         if (Mathf.Abs(dirX) < 0.01f) return;
@@ -245,7 +217,6 @@ public class BossController : MonoBehaviour
         _anim.Play(stateName, 0, 0f);
     }
 
-    // ─────────────────────────────────────────────────────────────────
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
@@ -265,7 +236,6 @@ public class BossController : MonoBehaviour
         playerCol.GetComponentInParent<StatsController>()?.TakeDamage(_contactDamage);
     }
 
-    // ─────────────────────────────────────────────────────────────────
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {

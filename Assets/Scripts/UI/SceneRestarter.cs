@@ -1,12 +1,8 @@
-using Genoverrei.Library.Core;
-using Genoverrei.Library.DesignPatternCore;
+using Kogetsu.Library.Core;
+using Kogetsu.Library.DesignPatternCore;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-/// <summary>
-/// กด R → โหลด Scene ปัจจุบันใหม่
-/// ใช้ BasicMovementInputObserverSO + BasicSceneEffectController
-/// </summary>
 public class SceneRestarter : MonoBehaviour
 {
     [SerializeField] private BasicMovementInputObserverSO _input;

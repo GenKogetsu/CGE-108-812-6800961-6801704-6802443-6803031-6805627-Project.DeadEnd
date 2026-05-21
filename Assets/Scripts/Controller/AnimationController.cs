@@ -1,5 +1,5 @@
-using Genoverrei.Library.Core;
-using Genoverrei.Library.DesignPatternCore;
+using Kogetsu.Library.Core;
+using Kogetsu.Library.DesignPatternCore;
 using UnityEngine;
 
 public class AnimationController : MonoBehaviour

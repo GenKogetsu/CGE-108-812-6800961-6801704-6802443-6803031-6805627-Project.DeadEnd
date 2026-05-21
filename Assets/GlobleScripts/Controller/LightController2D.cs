@@ -1,5 +1,5 @@
 using UnityEngine;
-using Genoverrei.Library.Attribute;
+using Kogetsu.Library.Attribute;
 using UnityEngine.Rendering.Universal;
 using System.Collections;
 using System.Collections.Generic;

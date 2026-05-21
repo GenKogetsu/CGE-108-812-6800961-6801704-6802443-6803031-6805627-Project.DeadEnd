@@ -1,11 +1,7 @@
-using Genoverrei.Library.Core;
+using Kogetsu.Library.Core;
 using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
-/// Stamina UI แบบ 10 ก้อน — ทุก 10% = 1 ก้อน
-/// ลาก Image 10 อันใส่ Blocks แล้วระบุ StatsController
-/// </summary>
 public class StaminaBlockUI : MonoBehaviour
 {
     [SerializeField] private StatsController _stats;
@@ -19,7 +15,7 @@ public class StaminaBlockUI : MonoBehaviour
         float ratio      = _stats.MaxStamina > 0f
             ? Mathf.Clamp01(_stats.GetCurrentStamina() / _stats.MaxStamina)
             : 0f;
-        int activeBlocks = Mathf.RoundToInt(ratio * _blocks.Length);  // ทุก 10% = 1 ก้อน
+        int activeBlocks = Mathf.RoundToInt(ratio * _blocks.Length);
 
         for (int i = 0; i < _blocks.Length; i++)
         {

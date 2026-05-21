@@ -1,10 +1,6 @@
-using Genoverrei.Library.Core;
+using Kogetsu.Library.Core;
 using UnityEngine;
 
-/// <summary>
-/// แถบ HP แบบง่าย — ปรับ sizeDelta.x ตามสัดส่วน currentHp / maxHp
-/// ใส่ script นี้บน GameObject ของ fill bar (RectTransform)
-/// </summary>
 public class HpBarUI : MonoBehaviour
 {
     [SerializeField] private StatsController _stats;
@@ -38,7 +34,6 @@ public class HpBarUI : MonoBehaviour
 
         _fillRect.sizeDelta = new Vector2(_maxWidth * ratio, _fillRect.sizeDelta.y);
 
-        // แสดง Game Over เมื่อ HP หมด
         if (!_gameOverShown && ratio <= 0f)
         {
             _gameOverShown = true;

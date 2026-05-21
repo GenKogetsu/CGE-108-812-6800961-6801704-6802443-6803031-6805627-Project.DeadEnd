@@ -1,11 +1,7 @@
-using Genoverrei.Library.Core;
-using Genoverrei.Library.DesignPatternCore;
+using Kogetsu.Library.Core;
+using Kogetsu.Library.DesignPatternCore;
 using UnityEngine;
 
-/// <summary>
-/// คลิกซ้าย (OnLeftClickChannel) → ยิงกระสุนตามทิศที่ตัวละครหัน
-/// ทิศอ่านจาก localScale.x ของ FacingTarget
-/// </summary>
 public class BulletShooter : MonoBehaviour
 {
     [Header("References")]
@@ -24,14 +20,10 @@ public class BulletShooter : MonoBehaviour
     [Tooltip("หน่วงระหว่างยิงแต่ละครั้ง (วินาที)")]
     [SerializeField] private float _fireRate = 0.3f;
 
-    // ── Runtime ───────────────────────────────────────────────────────
     private float _nextFireTime;
-
-
 
     public enum FlipMode { ScaleX, FlipX }
 
-    /// <summary>ทิศจากการ flip ของตัวละคร</summary>
     private Vector2 FacingDir
     {
         get
@@ -40,11 +32,10 @@ public class BulletShooter : MonoBehaviour
         }
     }
 
-    // ─────────────────────────────────────────────────────────────────
     private void Awake()
     {
-        if (_spawnPoint    == null) _spawnPoint    = transform;
-        if (_facingTarget  == null) _facingTarget  = transform;
+        if (_spawnPoint   == null) _spawnPoint   = transform;
+        if (_facingTarget == null) _facingTarget = transform;
     }
 
     private void OnEnable()
@@ -61,12 +52,10 @@ public class BulletShooter : MonoBehaviour
             _inputObserver.OnLeftClickChannel -= OnLeftClick;
     }
 
-    // ─────────────────────────────────────────────────────────────────
     private void OnLeftClick(ClickData _)
     {
         if (Time.time < _nextFireTime) return;
 
-        // Debug: ดูว่าอ่านทิศได้ถูกไหม
         Transform t = _facingTarget != null ? _facingTarget : transform;
         Debug.Log($"[BulletShooter] FacingDir={FacingDir}  scaleX={t.localScale.x:F2}");
 
@@ -74,7 +63,6 @@ public class BulletShooter : MonoBehaviour
         _nextFireTime = Time.time + _fireRate;
     }
 
-    // ─────────────────────────────────────────────────────────────────
     private void Shoot()
     {
         if (_bulletPrefab == null)

@@ -1,5 +1,5 @@
 using UnityEngine;
-using Genoverrei.Library.Core;
+using Kogetsu.Library.Core;
 
 
 public class NextSceneTrigger : MonoBehaviour

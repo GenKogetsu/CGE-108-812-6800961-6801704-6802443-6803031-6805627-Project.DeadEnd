@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Genoverrei.Library.Core;
+using Kogetsu.Library.Core;
 using UnityEngine;
 
 namespace MonsterAI
@@ -7,35 +7,28 @@ namespace MonsterAI
     [RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
     public class MonsterController : MonoBehaviour
     {
-        // ── Vision ────────────────────────────────────────────────────
         [Header("Vision")]
         public VisionConfig VisionCfg = new VisionConfig();
 
-        // ── Patrol ────────────────────────────────────────────────────
         [Header("Patrol")]
         public PatrolConfig PatrolCfg = new PatrolConfig();
 
-        // ── Chase / Search ────────────────────────────────────────────
         [Header("Chase")]
         public float ChaseSpeed = 3.5f;
 
         [Header("Search")]
         public float SearchSpeed = 2.5f;
 
-        // ── Animation Params ──────────────────────────────────────────
         [Header("Animation")]
         [Tooltip("ชื่อ Bool parameter ใน Animator สำหรับ animation วิ่ง (ว่าง = ไม่ใช้)")]
         [SerializeField] private string _isMovingParam = "IsMoving";
 
-        // ── Attack Strategies ─────────────────────────────────────────
         [Header("Attack Strategies")]
         public AttackStrategyData[] AttackData = new AttackStrategyData[1];
 
-        // ── HP ────────────────────────────────────────────────────────
         [Header("HP")]
         [SerializeField] private float _maxHp = 100f;
 
-        // ── Contact Damage (ชน player) ───────────────────────────────
         [Header("Contact Damage")]
         [Tooltip("Damage ที่ทำกับ Player เมื่อชน")]
         [SerializeField] private float _contactDamage  = 10f;
@@ -44,14 +37,12 @@ namespace MonsterAI
         [Tooltip("Trigger ชื่อนี้จะ Set ใน Animator Player เมื่อโดนชน")]
         [SerializeField] private string _playerHitTrigger = "Hit";
 
-        // ── Facing ────────────────────────────────────────────────────
         [Header("Facing")]
         [Tooltip("เปิดถ้าโมเดล default หันซ้าย → invert ทิศ flip ของ localScale.x")]
         [SerializeField] private bool _invertFacing = false;
         [Tooltip("เปิดถ้าการหันหน้าตามทิศเดินยังไปคนละทาง → กลับทิศที่ใช้ตัดสิน facing จาก movement")]
         [SerializeField] private bool _invertMoveFacing = false;
 
-        // ── Hit Flash ─────────────────────────────────────────────────
         [Header("Hit Flash")]
         [Tooltip("Root ที่มี SpriteRenderer ทั้งหมด (รวม inactive)")]
         [SerializeField] private Transform _hitFlashRoot;
@@ -60,21 +51,18 @@ namespace MonsterAI
         [SerializeField] private float     _hitLerpSpeed  = 10f;
         [SerializeField] private int       _hitLerpCount  = 2;
 
-        // ── References ────────────────────────────────────────────────
         [Header("References")]
         public Transform    PlayerTransform;
         public AttackHitbox Hitbox;
 
-        // ── Public Properties ─────────────────────────────────────────
-        public Rigidbody2D Rb2       { get; private set; }
-        public Animator    Animator  { get; private set; }
-        public int         FacingDir { get; private set; } = 1;
-        public Vector2     PivotPoint { get; private set; }
+        public Rigidbody2D Rb2            { get; private set; }
+        public Animator    Animator       { get; private set; }
+        public int         FacingDir      { get; private set; } = 1;
+        public Vector2     PivotPoint     { get; private set; }
         public Vector2     LastKnownPlayerPos { get; set; }
 
         public IReadOnlyList<AttackStrategy> Strategies => _strategies;
 
-        // ── Private ───────────────────────────────────────────────────
         MonsterStateMachine  _sm;
         List<AttackStrategy> _strategies;
         float                _cachedInitAnimSpeed;
@@ -90,7 +78,6 @@ namespace MonsterAI
         SearchState  _search;
         AttackState  _attackState;
 
-        // ─────────────────────────────────────────────────────────────
         void Awake()
         {
             Rb2      = GetComponent<Rigidbody2D>();
@@ -98,11 +85,10 @@ namespace MonsterAI
 
             _cachedInitAnimSpeed = Animator.speed;
 
-            // Cache SpriteRenderers รวม inactive → ใช้สำหรับ hit flash
             Transform flashRoot = _hitFlashRoot != null ? _hitFlashRoot : transform;
             _cachedRenderers = flashRoot.GetComponentsInChildren<SpriteRenderer>(includeInactive: true);
-            PivotPoint           = Rb2.position;
-            _currentHp           = _maxHp;
+            PivotPoint = Rb2.position;
+            _currentHp = _maxHp;
 
             _strategies = new List<AttackStrategy>();
             foreach (var d in AttackData)
@@ -132,14 +118,12 @@ namespace MonsterAI
                 Rb2.MovePosition(Rb2.position + (Vector2)Animator.deltaPosition);
         }
 
-        // ── State Access ──────────────────────────────────────────────
         public void ChangeState(IMonsterState next) => _sm.ChangeState(next);
         public PatrolState  GetPatrolState()  => _patrol;
         public ChaseState   GetChaseState()   => _chase;
         public SearchState  GetSearchState()  => _search;
         public AttackState  GetAttackState()  => _attackState;
 
-        // ── Movement ──────────────────────────────────────────────────
         public bool CanSeePlayer()
         {
             if (PlayerTransform == null) return false;
@@ -175,7 +159,7 @@ namespace MonsterAI
             if (FacingDir == dir) return;
             FacingDir = dir;
 
-            // XOR ทั้งสองค่า: ถ้า invert อย่างใดอย่างหนึ่ง (ไม่ใช่ทั้งคู่) ให้ flip scale
+            // XOR: ถ้า invert อย่างใดอย่างหนึ่ง (ไม่ใช่ทั้งคู่) ให้ flip scale
             bool invert = _invertFacing ^ _invertMoveFacing;
             int scaleDir = invert ? -dir : dir;
             Vector3 s = transform.localScale;
@@ -191,7 +175,6 @@ namespace MonsterAI
 
         public void ResetAnimatorSpeed() => Animator.speed = _cachedInitAnimSpeed;
 
-        // ── Attack Finished Flag ──────────────────────────────────────
         public void SetAttackFinished() => _attackFinished = true;
         public bool ConsumeAttackFinished()
         {
@@ -200,7 +183,6 @@ namespace MonsterAI
             return true;
         }
 
-        // ── TakeDamage (เรียกจาก Player) ─────────────────────────────
         public void TakeDamage(float damage)
         {
             if (_isDead) return;
@@ -248,7 +230,6 @@ namespace MonsterAI
             gameObject.SetActive(false);
         }
 
-        // ── Contact Damage → Player ───────────────────────────────────
         void OnTriggerEnter2D(Collider2D other)
         {
             if (!other.CompareTag("Player")) return;
@@ -268,12 +249,10 @@ namespace MonsterAI
             playerCol.GetComponent<StatsController>()?.TakeDamage(_contactDamage);
         }
 
-        // ── Animation Events ──────────────────────────────────────────
         public void EnableHitbox()     => Hitbox?.Enable();
         public void DisableHitbox()    => Hitbox?.Disable();
         public void OnAttackFinished() => SetAttackFinished();
 
-        // ── Gizmos ────────────────────────────────────────────────────
 #if UNITY_EDITOR
         void OnDrawGizmosSelected()
         {
