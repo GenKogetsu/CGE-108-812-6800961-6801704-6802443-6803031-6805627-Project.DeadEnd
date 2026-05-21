@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.genoverrei.library": "git@github.com:GenKogetsu/GenoverreiLibary6.git",
+    "com.kogetsu.library": "https://github.com/GenKogetsu/KogetsuLibrary.git",
     "com.unity.2d.animation": "13.0.4",
     "com.unity.2d.aseprite": "3.0.1",
     "com.unity.2d.psdimporter": "12.0.1",

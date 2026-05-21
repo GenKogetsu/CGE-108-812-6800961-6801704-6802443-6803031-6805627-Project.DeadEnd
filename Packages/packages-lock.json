@@ -1,13 +1,13 @@
 {
   "dependencies": {
-    "com.genoverrei.library": {
-      "version": "git@github.com:GenKogetsu/GenoverreiLibary6.git",
+    "com.kogetsu.library": {
+      "version": "https://github.com/GenKogetsu/KogetsuLibrary.git",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.unity.textmeshpro": "3.0.9"
       },
-      "hash": "17951e0ba7e5511d4ce7a2f6d7835035d570eb11"
+      "hash": "8ee56461e027ab2a0d0669d3be1a7aa4926dbfc2"
     },
     "com.unity.2d.animation": {
       "version": "13.0.4",
